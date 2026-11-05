@@ -1,5 +1,5 @@
-"""
-HeritageAI — Main FastAPI Application
+﻿"""
+HeritageAI â€” Main FastAPI Application
 AI-Powered Reconstruction of Lost or Damaged Heritage
 
 Startup:
@@ -38,8 +38,8 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# ── CORS ─────────────────────────────────────────────────────────────────────
-origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")]
+# â”€â”€ CORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5173,https://heritage-revive-ai-7j4w.vercel.app").split(",")]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -48,10 +48,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Static file serving for stored images ────────────────────────────────────
+# â”€â”€ Static file serving for stored images â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 app.mount("/storage", StaticFiles(directory="storage"), name="storage")
 
-# ── Routers ───────────────────────────────────────────────────────────────────
+# â”€â”€ Routers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 app.include_router(upload.router,   prefix="/api", tags=["Upload"])
 app.include_router(analyze.router,  prefix="/api", tags=["Analysis"])
 app.include_router(restore.router,  prefix="/api", tags=["Restoration"])
@@ -84,7 +84,7 @@ async def list_models():
                 "id": "lama",
                 "name": "LaMa (Large Mask Inpainting)",
                 "description": (
-                    "Best for heritage restoration — cracks, scratches, texture repair. "
+                    "Best for heritage restoration â€” cracks, scratches, texture repair. "
                     "Uses Fast Fourier Convolutions for global structure awareness. "
                     "No prompt needed. Works on CPU and GPU."
                 ),
@@ -122,3 +122,4 @@ async def list_models():
             },
         ],
     }
+
